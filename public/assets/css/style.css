@@ -623,3 +623,271 @@ form > p {
         animation-duration: 0.01ms !important;
     }
 }
+
+/* 10. Menu de filtros do catalogo — IA-04 */
+.cabecalho-catalogo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.cabecalho-catalogo h2 {
+    margin-bottom: 5px;
+}
+
+.resultado-catalogo {
+    margin: 0;
+    color: var(--cor-suave);
+    font-size: 0.94rem;
+}
+
+.menu-filtros {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.botao-abrir-filtros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 10px 17px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    background: var(--cor-branco);
+    color: var(--cor-titulo);
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    box-shadow: 0 3px 12px rgba(92, 43, 63, 0.04);
+}
+
+.botao-abrir-filtros::-webkit-details-marker {
+    display: none;
+}
+
+.botao-abrir-filtros:hover,
+.menu-filtros[open] > .botao-abrir-filtros {
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria-escura);
+    background: var(--cor-fundo-rosa);
+}
+
+.botao-abrir-filtros:focus-visible {
+    outline: 3px solid var(--cor-primaria);
+    outline-offset: 3px;
+}
+
+.quantidade-filtros {
+    display: inline-grid;
+    min-width: 21px;
+    height: 21px;
+    padding-inline: 5px;
+    place-items: center;
+    border-radius: 50px;
+    background: var(--cor-primaria);
+    color: var(--cor-branco);
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+.seta-filtros {
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 150ms ease;
+}
+
+.menu-filtros[open] .seta-filtros {
+    transform: rotate(225deg) translate(-2px, -2px);
+}
+
+.caixa-filtros {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 11px);
+    right: 0;
+    width: min(350px, calc(100vw - 32px));
+    padding: 6px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 19px;
+    background: var(--cor-branco);
+    box-shadow: 0 22px 52px rgba(92, 43, 63, 0.17);
+}
+
+/* Sobrescreve o estilo generico usado no formulario de inscricao. */
+.formulario-filtros {
+    width: 100%;
+    margin: 0;
+    padding: 16px;
+    border: 0;
+    border-radius: 14px;
+    background: transparent;
+    box-shadow: none;
+}
+
+.topo-caixa-filtros {
+    display: grid;
+    gap: 2px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.topo-caixa-filtros strong {
+    color: var(--cor-titulo);
+    font-size: 1.05rem;
+}
+
+.topo-caixa-filtros > span {
+    color: var(--cor-suave);
+    font-size: 0.82rem;
+}
+
+.opcoes-filtros {
+    min-width: 0;
+    margin: 14px 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.opcoes-filtros legend {
+    padding: 0 0 7px;
+    color: var(--cor-titulo);
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.opcao-filtro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 10px;
+    border-radius: 9px;
+    color: var(--cor-texto);
+    cursor: pointer;
+}
+
+.opcao-filtro:hover,
+.opcao-filtro:has(input:checked) {
+    background: var(--cor-fundo-rosa);
+}
+
+.descricao-opcao-filtro {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    font-weight: 600;
+}
+
+.descricao-opcao-filtro input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: var(--cor-primaria);
+    cursor: pointer;
+}
+
+.total-categoria {
+    color: var(--cor-suave);
+    font-size: 0.85rem;
+}
+
+.opcao-todas {
+    display: block;
+    margin-top: 7px;
+    padding: 11px 10px;
+    border-top: 1px solid var(--cor-borda);
+    color: var(--cor-primaria-escura);
+    font-size: 0.88rem;
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.opcao-todas:hover {
+    color: var(--cor-primaria);
+}
+
+.acoes-filtros {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.limpar-filtros {
+    flex: 1;
+    color: var(--cor-primaria-escura);
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Mais especifico do que a regra generica do botao de submit. */
+.formulario-filtros button.aplicar-filtros {
+    width: auto;
+    flex: 1.5;
+    min-height: 42px;
+    padding: 9px 13px;
+    font-size: 0.86rem;
+    white-space: nowrap;
+}
+
+.filtros-ativos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: -6px 0 24px;
+    font-size: 0.84rem;
+}
+
+.filtros-ativos > span:first-child {
+    color: var(--cor-suave);
+}
+
+.etiqueta-filtro-ativo {
+    padding: 4px 11px;
+    border: 1px solid #e8c3cc;
+    border-radius: 100px;
+    background: var(--cor-fundo-rosa);
+    color: var(--cor-primaria-escura);
+    font-weight: 600;
+}
+
+.filtros-ativos a {
+    font-weight: 700;
+}
+
+.sem-oficinas {
+    padding: 35px 24px;
+    border: 1px dashed var(--cor-borda);
+    border-radius: var(--raio);
+    background: var(--cor-branco);
+    text-align: center;
+}
+
+.sem-oficinas p {
+    color: var(--cor-suave);
+}
+
+@media (max-width: 650px) {
+    .cabecalho-catalogo {
+        align-items: flex-start;
+    }
+
+    .caixa-filtros {
+        right: 0;
+    }
+
+    .formulario-filtros button.aplicar-filtros {
+        width: auto;
+    }
+}
