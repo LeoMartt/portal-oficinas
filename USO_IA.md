@@ -96,4 +96,51 @@ As funcionalidades de filtragem dinâmica, validação de inscrições e armazen
 
 ---
 
+## IA-03 — Desenvolvimento do CSS e identidade visual
+
+**Data:** 19/10/2026  
+**Ferramenta:** ChatGPT (OpenAI)  
+**Modelo:** GPT-6  
+**Finalidade:** Desenvolvimento da identidade visual e estilização das páginas do Instituto Sakura.
+
+### Solicitação realizada
+
+Foi solicitado à inteligência artificial que apresentasse sugestões de design para o portal acadêmico Instituto Sakura, relacionado ao ensino da língua e cultura japonesa.
+
+Após a apresentação de quatro propostas visuais, foi escolhido o estilo Sakura Minimalista. Em seguida, foi solicitado o desenvolvimento do CSS para aplicação nas páginas HTML existentes.
+
+### Conteúdo gerado
+
+A ferramenta auxiliou no desenvolvimento da identidade visual do site, utilizando uma paleta de cores inspirada nas flores de cerejeira japonesas, com tons de creme, rosa, vermelho e vinho.
+
+O CSS desenvolvido contemplou a estilização dos seguintes elementos:
+
+- Cabeçalho e menu de navegação.
+- Página inicial e seções de apresentação.
+- Cards das oficinas.
+- Botões e links.
+- Formulários de inscrição.
+- Rodapé.
+- Regras de responsividade para diferentes tamanhos de tela.
+
+### Arquivos afetados
+
+- `public/assets/css/style.css` — Implementação da estilização visual e regras de responsividade.
+
+**Commit relacionado:** preencher após realizar o commit.
+
+### Aproveitamento e alterações
+
+Entre as propostas apresentadas pela inteligência artificial, foi escolhido o design Sakura Minimalista por sua relação com a temática japonesa e sua organização visual.
+
+O CSS gerado com apoio da ferramenta foi utilizado como base para a estilização do portal. O aluno avaliou o resultado visual e aprovou o design para continuidade do desenvolvimento.
+
+### Verificação
+
+O CSS foi aplicado ao projeto e o resultado visual foi avaliado pelo aluno no navegador, sendo considerado adequado para o Instituto Sakura.
+
+A verificação específica da responsividade nas larguras de 360 px e 1280 px, da navegação por teclado e da ausência de rolagem horizontal deverá ser confirmada e documentada nos testes do projeto.
+
+---
+
 *Novos registros serão acrescentados conforme a utilização de inteligência artificial nas próximas etapas do projeto.*

@@ -1,5 +1,625 @@
 /*
- * CSS da etapa HTML.
- * A estilização visual e a responsividade serão desenvolvidas na branch de CSS.
- * Caso este arquivo seja adaptado com apoio de IA, documentar em USO_IA.md.
+ * Instituto Sakura — identidade visual Sakura Minimalista
+ * CSS autoral do projeto acadêmico, desenvolvido com apoio de IA.
+ * Registro: IA-03 em USO_IA.md.
+ * Não utiliza Bootstrap, Tailwind, frameworks ou bibliotecas CSS.
  */
+
+/* 1. Paleta e configurações gerais */
+:root {
+    color-scheme: light;
+    --cor-fundo: #fff9f6;
+    --cor-branco: #ffffff;
+    --cor-fundo-rosa: #f9e8ec;
+    --cor-rosa: #efd0d9;
+    --cor-primaria: #a83b53;
+    --cor-primaria-escura: #76263b;
+    --cor-titulo: #402a34;
+    --cor-texto: #57454d;
+    --cor-suave: #77676f;
+    --cor-borda: #ead9df;
+    --sombra-card: 0 12px 32px rgba(92, 43, 63, 0.07);
+    --raio: 18px;
+    --largura-conteudo: 1120px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 0;
+    margin: 0;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+h1, h2, h3, p {
+    margin-top: 0;
+}
+
+h1, h2, h3 {
+    color: var(--cor-titulo);
+    line-height: 1.25;
+}
+
+h1, h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: -0.025em;
+}
+
+h1 {
+    font-size: clamp(2.25rem, 4vw, 3.8rem);
+}
+
+h2 {
+    font-size: clamp(1.7rem, 2.6vw, 2.45rem);
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+a {
+    color: var(--cor-primaria-escura);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--cor-primaria);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--cor-primaria);
+    outline-offset: 3px;
+}
+
+button, input, select {
+    font: inherit;
+}
+
+.container {
+    width: min(var(--largura-conteudo), calc(100% - 40px));
+    margin-inline: auto;
+}
+
+/* 2. Cabeçalho e navegação */
+.pular-conteudo {
+    position: absolute;
+    z-index: 20;
+    top: -100px;
+    left: 16px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: var(--cor-primaria-escura);
+    color: var(--cor-branco);
+}
+
+.pular-conteudo:focus {
+    top: 10px;
+    color: var(--cor-branco);
+}
+
+.cabecalho-site {
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.cabecalho-site > .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 28px;
+    align-items: center;
+    padding-block: 19px;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.58rem;
+    font-weight: bold;
+    line-height: 1.25;
+}
+
+.marca::before {
+    content: "桜";
+    display: grid;
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid #e8bdca;
+    border-radius: 50%;
+    background: var(--cor-fundo-rosa);
+    color: var(--cor-primaria);
+    font-family: "Yu Gothic", "Meiryo", sans-serif;
+    font-size: 1.3rem;
+}
+
+.marca a {
+    color: var(--cor-titulo);
+    text-decoration: none;
+}
+
+.subtitulo-marca {
+    grid-column: 1;
+    margin: 2px 0 0 49px;
+    color: var(--cor-suave);
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+}
+
+.cabecalho-site nav {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+
+.menu-principal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu-principal a {
+    display: inline-block;
+    padding: 9px 13px;
+    border-radius: 12px;
+    color: var(--cor-texto);
+    font-size: 0.91rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+.menu-principal a:hover,
+.menu-principal a[aria-current="page"] {
+    background: var(--cor-fundo-rosa);
+    color: var(--cor-primaria-escura);
+}
+
+/* 3. Apresentação da página inicial */
+.apresentacao {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--cor-borda);
+    background:
+        radial-gradient(circle at 89% 10%, rgba(244, 190, 204, 0.37), transparent 35%),
+        linear-gradient(115deg, #fffaf8 15%, #fbecef 100%);
+}
+
+.apresentacao::before {
+    content: "";
+    position: absolute;
+    top: -110px;
+    right: -110px;
+    width: 310px;
+    height: 310px;
+    border: 1px solid rgba(168, 59, 83, 0.13);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.apresentacao .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(210px, 0.7fr);
+    align-content: center;
+    align-items: center;
+    column-gap: 56px;
+    min-height: 490px;
+    padding-block: 78px;
+}
+
+.apresentacao .container > * {
+    grid-column: 1;
+}
+
+.apresentacao .container::after {
+    content: "桜";
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    display: grid;
+    width: min(100%, 290px);
+    aspect-ratio: 1;
+    place-items: center;
+    justify-self: center;
+    border: 1px solid #e4b4c0;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 26% 23%, #fffdfd, transparent 52%),
+        #f7dce3;
+    box-shadow: 0 0 0 17px rgba(255, 255, 255, 0.42), 0 20px 45px rgba(123, 52, 75, 0.10);
+    color: var(--cor-primaria);
+    font-family: "Yu Gothic", "Meiryo", sans-serif;
+    font-size: clamp(6rem, 14vw, 10rem);
+    line-height: 1;
+    text-shadow: 0 4px 15px rgba(136, 49, 77, 0.09);
+}
+
+.etiqueta {
+    width: fit-content;
+    margin-bottom: 20px;
+    padding: 5px 13px;
+    border: 1px solid #e8c3cc;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.75);
+    color: var(--cor-primaria-escura);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.apresentacao h1 {
+    max-width: 660px;
+    margin-bottom: 22px;
+}
+
+.apresentacao .container > p:not(.etiqueta) {
+    max-width: 580px;
+    margin-bottom: 27px;
+    font-size: 1.05rem;
+}
+
+/* 4. Botões e chamadas */
+.botao,
+.convite a,
+button[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 44px;
+    padding: 11px 22px;
+    border: 1px solid var(--cor-primaria);
+    border-radius: 12px;
+    background: var(--cor-primaria);
+    color: var(--cor-branco);
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.botao:hover,
+.convite a:hover,
+button[type="submit"]:hover {
+    transform: translateY(-1px);
+    background: var(--cor-primaria-escura);
+    color: var(--cor-branco);
+}
+
+/* 5. Oficinas e cards */
+.destaques {
+    padding-block: 74px 86px;
+}
+
+.destaques > .container > p {
+    margin-bottom: 29px;
+    color: var(--cor-suave);
+}
+
+.grade-oficinas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.card-oficina {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 27px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background: var(--cor-branco);
+    box-shadow: var(--sombra-card);
+    transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.card-oficina:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 38px rgba(92, 43, 63, 0.12);
+}
+
+.card-oficina .categoria {
+    width: fit-content;
+    margin-bottom: 18px;
+    padding: 4px 12px;
+    border-radius: 30px;
+    background: var(--cor-fundo-rosa);
+    color: var(--cor-primaria-escura);
+    font-size: 0.77rem;
+    font-weight: 700;
+    letter-spacing: 0.015em;
+}
+
+.card-oficina h3 {
+    margin-bottom: 14px;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.card-oficina p {
+    margin-bottom: 12px;
+}
+
+.card-oficina strong {
+    color: var(--cor-titulo);
+}
+
+.card-oficina a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    margin-top: auto;
+    padding-top: 14px;
+    color: var(--cor-primaria-escura);
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+}
+
+/* 6. Convite e rodapé */
+.convite {
+    padding-block: 63px;
+    border-block: 1px solid var(--cor-borda);
+    background: var(--cor-fundo-rosa);
+}
+
+.convite .container {
+    text-align: center;
+}
+
+.convite h2 {
+    margin-bottom: 13px;
+}
+
+.convite p {
+    max-width: 620px;
+    margin: 0 auto 25px;
+}
+
+.rodape-site {
+    padding-block: 35px;
+    background: #402a34;
+    color: #fceff2;
+    text-align: center;
+}
+
+.rodape-site p {
+    margin: 0 0 5px;
+    font-size: 0.88rem;
+}
+
+/* 7. Páginas internas */
+main > .container {
+    padding-block: 55px 80px;
+}
+
+.cabecalho-pagina {
+    margin-bottom: 38px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.cabecalho-pagina h1 {
+    margin-bottom: 14px;
+}
+
+.cabecalho-pagina p {
+    max-width: 750px;
+    margin-bottom: 0;
+    color: var(--cor-suave);
+    font-size: 1.05rem;
+}
+
+main > .container > section {
+    margin-bottom: 44px;
+}
+
+main > .container > section > h2 {
+    margin-bottom: 16px;
+}
+
+main > .container > section > p {
+    max-width: 810px;
+}
+
+main > .container > section > p em,
+main > .container > section > p small {
+    color: var(--cor-suave);
+}
+
+main > .container > section > ul {
+    padding-left: 21px;
+}
+
+main > .container > section > ul li {
+    margin-bottom: 8px;
+}
+
+/* 8. Formulário de inscrição */
+form {
+    width: min(100%, 670px);
+    margin-block: 18px 23px;
+    padding: clamp(20px, 4vw, 36px);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background: var(--cor-branco);
+    box-shadow: var(--sombra-card);
+}
+
+.campo-formulario {
+    margin-bottom: 21px;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--cor-titulo);
+    font-weight: 650;
+}
+
+.campo-formulario label span {
+    color: var(--cor-primaria);
+}
+
+.campo-formulario input:not([type="checkbox"]),
+.campo-formulario select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 47px;
+    padding: 10px 13px;
+    border: 1px solid #cbbbc1;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--cor-titulo);
+}
+
+.campo-formulario input:not([type="checkbox"]):hover,
+.campo-formulario select:hover {
+    border-color: var(--cor-primaria);
+}
+
+.campo-formulario:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+}
+
+.campo-formulario input[type="checkbox"] {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    margin-top: 5px;
+    accent-color: var(--cor-primaria);
+}
+
+.campo-formulario:has(input[type="checkbox"]) label {
+    margin: 0;
+    font-weight: 400;
+}
+
+form > p {
+    color: var(--cor-suave);
+    font-size: 0.91rem;
+}
+
+/* 9. Acessibilidade e dispositivos menores */
+@media (max-width: 920px) {
+    .cabecalho-site > .container {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .cabecalho-site nav {
+        grid-column: 1;
+        grid-row: auto;
+        margin-top: 9px;
+    }
+
+    .menu-principal {
+        justify-content: flex-start;
+    }
+
+    .apresentacao .container {
+        column-gap: 35px;
+        grid-template-columns: minmax(0, 1fr) minmax(170px, .55fr);
+    }
+
+    .grade-oficinas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .container {
+        width: min(100% - 32px, var(--largura-conteudo));
+    }
+
+    .cabecalho-site > .container {
+        padding-block: 14px;
+    }
+
+    .menu-principal {
+        gap: 4px;
+    }
+
+    .menu-principal a {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    .apresentacao .container {
+        display: block;
+        min-height: 0;
+        padding-block: 58px 67px;
+    }
+
+    .apresentacao .container::after {
+        display: none;
+    }
+
+    .apresentacao h1 {
+        font-size: clamp(2.15rem, 9vw, 3rem);
+    }
+
+    .destaques {
+        padding-block: 52px 65px;
+    }
+
+    .grade-oficinas {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card-oficina {
+        padding: 22px;
+    }
+
+    main > .container {
+        padding-block: 38px 55px;
+    }
+
+    .convite {
+        padding-block: 49px;
+    }
+
+    .botao,
+    .convite a,
+    button[type="submit"] {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
