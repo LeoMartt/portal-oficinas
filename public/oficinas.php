@@ -1,7 +1,46 @@
 <?php
-// Estrutura inicial do catálogo criada com apoio de IA. Ver IA-02 em USO_IA.md.
-// Na etapa PHP, os cards serão gerados com um array e um laço e haverá filtro por GET.
+// Filtro de multiplas categorias via GET com apoio de IA.
+// Referencia: IA-04 em USO_IA.md (atualizar com esta melhoria).
 $tituloPagina = 'Oficinas';
+require_once dirname(__DIR__) . '/includes/oficinas.php';
+
+// GET pode receber uma categoria (?categoria=idioma) ou varias
+// (?categoria[]=idioma&categoria[]=cultura).
+$categoriasRecebidas = $_GET['categoria'] ?? [];
+if (is_string($categoriasRecebidas)) {
+    $categoriasRecebidas = [$categoriasRecebidas];
+}
+if (!is_array($categoriasRecebidas)) {
+    $categoriasRecebidas = [];
+}
+
+$categoriasSelecionadas = [];
+foreach ($categoriasRecebidas as $valor) {
+    if (is_string($valor)) {
+        $valor = strtolower(trim($valor));
+        if ($valor !== '' && !in_array($valor, $categoriasSelecionadas, true)) {
+            $categoriasSelecionadas[] = $valor;
+        }
+    }
+}
+
+// Sem categoria selecionada = todas as oficinas.
+$mostrarTodas = $categoriasSelecionadas === [];
+$oficinasFiltradas = array_filter(
+    $oficinas,
+    static fn (array $oficina): bool =>
+        $mostrarTodas || in_array($oficina['categoria'], $categoriasSelecionadas, true)
+);
+
+// Quantidade de categorias validas escolhidas para o indicador visual.
+$quantidadeFiltros = count(array_intersect($categoriasSelecionadas, array_keys($categorias)));
+
+// Contagem por categoria usada nas opcoes do menu.
+$quantidadePorCategoria = array_fill_keys(array_keys($categorias), 0);
+foreach ($oficinas as $oficina) {
+    $quantidadePorCategoria[$oficina['categoria']]++;
+}
+
 require_once dirname(__DIR__) . '/includes/cabecalho.php';
 ?>
 
@@ -9,72 +48,112 @@ require_once dirname(__DIR__) . '/includes/cabecalho.php';
     <div class="container">
         <header class="cabecalho-pagina">
             <h1>Oficinas disponíveis</h1>
-            <p>Conheça seis oficinas fictícias sobre o Japão, divididas em três categorias.</p>
+            <p>Explore nossas oficinas fictícias sobre língua, cultura e artes do Japão.</p>
         </header>
 
-        <section aria-labelledby="titulo-categorias">
-            <h2 id="titulo-categorias">Categorias</h2>
-            <p>Idioma, Cultura e Artes.</p>
-            <p><em>O filtro por categoria será implementado na etapa de programação PHP.</em></p>
-        </section>
+        <section class="secao-catalogo" aria-labelledby="titulo-catalogo">
+            <div class="cabecalho-catalogo">
+                <div>
+                    <h2 id="titulo-catalogo">Catálogo de oficinas</h2>
+                    <p class="resultado-catalogo" role="status">
+                        <?= count($oficinasFiltradas) ?> oficina(s) encontrada(s)
+                    </p>
+                </div>
 
-        <section aria-labelledby="titulo-catalogo">
-            <h2 id="titulo-catalogo">Catálogo completo</h2>
-            <div class="grade-oficinas">
-                <article class="card-oficina" id="idioma-01">
-                    <p class="categoria">Idioma</p>
-                    <h3>Japonês para Iniciantes</h3>
-                    <p>Vocabulário inicial, apresentações pessoais e expressões cotidianas.</p>
-                    <p><strong>Carga horária:</strong> 12 horas</p>
-                    <p><strong>Data:</strong> <time datetime="2026-12-05">05/12/2026</time></p>
-                    <a href="/inscricao.php">Selecionar oficina no formulário</a>
-                </article>
+                <details class="menu-filtros">
+                    <summary class="botao-abrir-filtros">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M4 7h16M7 12h10M10 17h4" />
+                        </svg>
+                        <span>Filtros</span>
+                        <?php if ($quantidadeFiltros > 0): ?>
+                            <span class="quantidade-filtros" aria-label="<?= $quantidadeFiltros ?> categorias selecionadas">
+                                <?= $quantidadeFiltros ?>
+                            </span>
+                        <?php endif; ?>
+                        <span class="seta-filtros" aria-hidden="true"></span>
+                    </summary>
 
-                <article class="card-oficina" id="idioma-02">
-                    <p class="categoria">Idioma</p>
-                    <h3>Hiragana e Katakana</h3>
-                    <p>Introdução aos dois sistemas de escrita fonética da língua japonesa.</p>
-                    <p><strong>Carga horária:</strong> 8 horas</p>
-                    <p><strong>Data:</strong> <time datetime="2026-12-12">12/12/2026</time></p>
-                    <a href="/inscricao.php">Selecionar oficina no formulário</a>
-                </article>
+                    <div class="caixa-filtros">
+                        <form class="formulario-filtros" method="get" action="/oficinas.php">
+                            <div class="topo-caixa-filtros">
+                                <strong>Filtrar oficinas</strong>
+                                <span>Selecione uma ou mais categorias</span>
+                            </div>
 
-                <article class="card-oficina" id="cultura-01">
-                    <p class="categoria">Cultura</p>
-                    <h3>História e Tradições do Japão</h3>
-                    <p>Panorama histórico, festivais tradicionais e manifestações culturais.</p>
-                    <p><strong>Carga horária:</strong> 10 horas</p>
-                    <p><strong>Data:</strong> <time datetime="2026-12-19">19/12/2026</time></p>
-                    <a href="/inscricao.php">Selecionar oficina no formulário</a>
-                </article>
+                            <fieldset class="opcoes-filtros">
+                                <legend>Categorias</legend>
 
-                <article class="card-oficina" id="cultura-02">
-                    <p class="categoria">Cultura</p>
-                    <h3>Etiqueta e Costumes Japoneses</h3>
-                    <p>Saudações, formas de respeito e costumes de convivência no Japão.</p>
-                    <p><strong>Carga horária:</strong> 6 horas</p>
-                    <p><strong>Data:</strong> <time datetime="2027-01-09">09/01/2027</time></p>
-                    <a href="/inscricao.php">Selecionar oficina no formulário</a>
-                </article>
+                                <?php foreach ($categorias as $slug => $nomeCategoria): ?>
+                                    <label class="opcao-filtro">
+                                        <span class="descricao-opcao-filtro">
+                                            <input
+                                                type="checkbox"
+                                                name="categoria[]"
+                                                value="<?= htmlspecialchars($slug, ENT_QUOTES, 'UTF-8') ?>"
+                                                <?= in_array($slug, $categoriasSelecionadas, true) ? 'checked' : '' ?>
+                                            >
+                                            <span><?= htmlspecialchars($nomeCategoria, ENT_QUOTES, 'UTF-8') ?></span>
+                                        </span>
+                                        <span class="total-categoria"><?= $quantidadePorCategoria[$slug] ?></span>
+                                    </label>
+                                <?php endforeach; ?>
+                            </fieldset>
 
-                <article class="card-oficina" id="artes-01">
-                    <p class="categoria">Artes</p>
-                    <h3>Introdução ao Shodō</h3>
-                    <p>Conheça princípios da caligrafia japonesa e seus materiais tradicionais.</p>
-                    <p><strong>Carga horária:</strong> 4 horas</p>
-                    <p><strong>Data:</strong> <time datetime="2027-01-16">16/01/2027</time></p>
-                    <a href="/inscricao.php">Selecionar oficina no formulário</a>
-                </article>
+                            <a class="opcao-todas" href="/oficinas.php">
+                                <span aria-hidden="true">↗</span> Todas as oficinas (<?= count($oficinas) ?>)
+                            </a>
 
-                <article class="card-oficina" id="artes-02">
-                    <p class="categoria">Artes</p>
-                    <h3>Origami e Artes Tradicionais</h3>
-                    <p>Dobragem de papel e introdução ao significado cultural do origami.</p>
-                    <p><strong>Carga horária:</strong> 5 horas</p>
-                    <p><strong>Data:</strong> <time datetime="2027-01-23">23/01/2027</time></p>
-                    <a href="/inscricao.php">Selecionar oficina no formulário</a>
-                </article>
+                            <div class="acoes-filtros">
+                                <a class="limpar-filtros" href="/oficinas.php">Limpar filtros</a>
+                                <button type="submit" class="aplicar-filtros">Aplicar filtros</button>
+                            </div>
+                        </form>
+                    </div>
+                </details>
             </div>
+
+            <?php if (!$mostrarTodas): ?>
+                <div class="filtros-ativos" aria-label="Categorias selecionadas">
+                    <span>Filtros ativos:</span>
+                    <?php foreach ($categorias as $slug => $nomeCategoria): ?>
+                        <?php if (in_array($slug, $categoriasSelecionadas, true)): ?>
+                            <span class="etiqueta-filtro-ativo">
+                                <?= htmlspecialchars($nomeCategoria, ENT_QUOTES, 'UTF-8') ?>
+                            </span>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    <a href="/oficinas.php">Ver todas</a>
+                </div>
+            <?php endif; ?>
+
+            <?php if (count($oficinasFiltradas) === 0): ?>
+                <div class="sem-oficinas">
+                    <h3>Nenhuma oficina encontrada</h3>
+                    <p>Não encontramos oficinas para as categorias selecionadas.</p>
+                    <a class="botao" href="/oficinas.php">Mostrar todas as oficinas</a>
+                </div>
+            <?php else: ?>
+                <div class="grade-oficinas">
+                    <?php foreach ($oficinasFiltradas as $oficina): ?>
+                        <article class="card-oficina" id="<?= htmlspecialchars($oficina['id'], ENT_QUOTES, 'UTF-8') ?>">
+                            <p class="categoria">
+                                <?= htmlspecialchars($categorias[$oficina['categoria']], ENT_QUOTES, 'UTF-8') ?>
+                            </p>
+                            <h3><?= htmlspecialchars($oficina['titulo'], ENT_QUOTES, 'UTF-8') ?></h3>
+                            <p><?= htmlspecialchars($oficina['descricao'], ENT_QUOTES, 'UTF-8') ?></p>
+                            <p><strong>Carga horária:</strong> <?= (int) $oficina['carga_horaria'] ?> horas</p>
+                            <p>
+                                <strong>Data:</strong>
+                                <time datetime="<?= htmlspecialchars($oficina['data'], ENT_QUOTES, 'UTF-8') ?>">
+                                    <?= date('d/m/Y', strtotime($oficina['data'])) ?>
+                                </time>
+                            </p>
+                            <a href="/inscricao.php">Selecionar oficina no formulário</a>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </section>
     </div>
 </main>
