@@ -878,13 +878,38 @@ form > p {
     color: var(--cor-suave);
 }
 
+/* Correcao responsiva do menu de filtros - ver IA-04 em USO_IA.md. */
 @media (max-width: 650px) {
     .cabecalho-catalogo {
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
     }
 
+    .cabecalho-catalogo > div {
+        min-width: 0;
+    }
+
+    /* O botao e a caixa ocupam a largura disponivel do celular. */
+    .menu-filtros,
+    .botao-abrir-filtros {
+        width: 100%;
+    }
+
+    /* No celular, a caixa abre ABAIXO do botao e empurra os cards.
+       Isso evita que fique fora da tela ou esconda outros elementos. */
     .caixa-filtros {
-        right: 0;
+        position: static;
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .formulario-filtros {
+        padding: 12px;
+    }
+
+    .acoes-filtros {
+        gap: 8px;
     }
 
     .formulario-filtros button.aplicar-filtros {
