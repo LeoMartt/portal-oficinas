@@ -49,4 +49,51 @@ A conferência do cronograma com os requisitos do documento original e seu acomp
 
 ---
 
+## IA-02 — Desenvolvimento da estrutura HTML
+
+**Data:** 19/10/2026  
+**Ferramenta:** ChatGPT (OpenAI)  
+**Modelo:** GPT-6  
+**Finalidade:** Auxílio na criação da estrutura inicial das páginas do projeto.
+
+### Solicitação realizada
+
+Foi solicitado à inteligência artificial o desenvolvimento da estrutura HTML de um portal de oficinas com temática japonesa, voltado ao aprendizado da língua, cultura e tradições do Japão, seguindo os requisitos apresentados no documento acadêmico.
+
+### Conteúdo gerado
+
+A ferramenta auxiliou na elaboração da estrutura inicial do site fictício denominado **Instituto Sakura — Língua e Cultura Japonesa**.
+
+Foram criadas as seis páginas exigidas pelo projeto, com navegação compartilhada, apresentação das oficinas, formulário de inscrição e organização semântica do HTML.
+
+Foram consideradas seis oficinas distribuídas nas categorias Idioma, Cultura e Artes.
+
+### Arquivos afetados
+
+- `public/index.php` — Página inicial.
+- `public/oficinas.php` — Catálogo de oficinas.
+- `public/inscricao.php` — Formulário de inscrição.
+- `public/salvar-inscricao.php` — Estrutura do resultado.
+- `public/inscricoes.php` — Página de consulta de inscrições.
+- `public/sobre.php` — Informações sobre o projeto.
+- `includes/cabecalho.php` — Cabeçalho e navegação.
+- `includes/rodape.php` — Rodapé.
+- `public/assets/css/style.css` — Arquivo inicial destinado à estilização.
+
+**Commit relacionado:** preencher após realizar o commit.
+
+### Aproveitamento e alterações
+
+Foi utilizada a estrutura inicial sugerida pela inteligência artificial como base para o desenvolvimento do projeto. O tema japonês foi escolhido pelo aluno, com foco em oficinas relacionadas ao idioma, à cultura e às artes japonesas.
+
+Eventuais alterações posteriores na estrutura serão documentadas conforme o desenvolvimento.
+
+### Verificação
+
+Os arquivos foram executados localmente utilizando o servidor integrado do PHP. Foi realizado um teste manual de navegação, e o funcionamento inicial das páginas HTML foi confirmado.
+
+As funcionalidades de filtragem dinâmica, validação de inscrições e armazenamento em JSON ainda não foram concluídas. Elas serão desenvolvidas e testadas nas próximas etapas.
+
+---
+
 *Novos registros serão acrescentados conforme a utilização de inteligência artificial nas próximas etapas do projeto.*
