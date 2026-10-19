@@ -1,0 +1,10 @@
+# Dados gerados pelo sistema
+dados/*.json
+
+# Arquivos temporarios
+*.log
+*.tmp
+
+# Configuracoes locais
+.env
+.vscode/
