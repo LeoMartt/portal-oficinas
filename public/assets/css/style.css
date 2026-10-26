@@ -916,3 +916,105 @@ form > p {
         width: auto;
     }
 }
+/* 10. Consulta de inscricoes - Registro IA-08 */
+.resumo-inscricoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 25px;
+}
+
+.resumo-inscricoes h2 {
+    margin-bottom: 8px;
+}
+
+.resumo-inscricoes p {
+    margin-bottom: 0;
+    color: var(--cor-suave);
+}
+
+.total-inscricoes {
+    display: flex;
+    min-width: 120px;
+    flex-direction: column;
+    align-items: center;
+    padding: 13px 22px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background: var(--cor-fundo-rosa);
+    text-align: center;
+}
+
+.total-inscricoes strong {
+    color: var(--cor-primaria-escura);
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.total-inscricoes span {
+    color: var(--cor-texto);
+    font-size: 0.85rem;
+}
+
+.rolagem-inscricoes {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-bottom: 22px;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    background: var(--cor-branco);
+    box-shadow: var(--sombra-card);
+}
+
+.tabela-inscricoes {
+    width: 100%;
+    min-width: 590px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela-inscricoes th,
+.tabela-inscricoes td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--cor-borda);
+    overflow-wrap: anywhere;
+    vertical-align: top;
+}
+
+.tabela-inscricoes th {
+    background: var(--cor-fundo-rosa);
+    color: var(--cor-titulo);
+}
+
+.tabela-inscricoes tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.tabela-inscricoes tbody tr:hover {
+    background: var(--cor-fundo);
+}
+
+.email-inscrito {
+    display: block;
+    color: var(--cor-suave);
+    font-size: 0.87rem;
+}
+
+.aviso-consulta {
+    padding: 18px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    background: var(--cor-fundo-rosa);
+}
+
+@media (max-width: 650px) {
+    .resumo-inscricoes {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .total-inscricoes {
+        align-self: stretch;
+    }
+}

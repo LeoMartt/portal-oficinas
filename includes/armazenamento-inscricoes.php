@@ -99,3 +99,66 @@ function salvarInscricaoJson(array $novoRegistro): string
         fclose($bloqueio);
     }
 }
+
+/**
+ * Consulta as inscricoes registradas no JSON.
+ * Retorna a lista de registros, [] se vazia, ou null em caso de erro.
+ * Leitura adicionada com apoio de IA. Ver IA-08 em USO_IA.md.
+ */
+function listarInscricoesJson(): ?array
+{
+    $pastaDados = dirname(__DIR__) . '/dados';
+    $arquivoJson = $pastaDados . '/inscricoes.json';
+    $arquivoBloqueio = $pastaDados . '/inscricoes.lock';
+
+    if (!is_dir($pastaDados) && !@mkdir($pastaDados, 0775, true) && !is_dir($pastaDados)) {
+        return null;
+    }
+
+    $bloqueio = @fopen($arquivoBloqueio, 'c');
+    if ($bloqueio === false) {
+        return null;
+    }
+
+    try {
+        // Usa o mesmo bloqueio do salvamento para nao ler durante uma atualizacao.
+        if (!flock($bloqueio, LOCK_EX)) {
+            return null;
+        }
+
+        // Cria o arquivo vazio automaticamente na primeira consulta.
+        if (!file_exists($arquivoJson) && @file_put_contents($arquivoJson, "[]\n") === false) {
+            return null;
+        }
+
+        $conteudo = @file_get_contents($arquivoJson);
+        if ($conteudo === false) {
+            return null;
+        }
+
+        try {
+            $inscricoes = json_decode($conteudo, true, 512, JSON_THROW_ON_ERROR);
+        } catch (JsonException $excecao) {
+            return null;
+        }
+
+        if (!is_array($inscricoes) || !array_is_list($inscricoes)) {
+            return null;
+        }
+
+        foreach ($inscricoes as $inscricao) {
+            if (!is_array($inscricao) ||
+                !is_string($inscricao['nome'] ?? null) ||
+                !is_string($inscricao['email'] ?? null) ||
+                !is_string($inscricao['oficina_id'] ?? null) ||
+                !is_string($inscricao['data_hora'] ?? null)) {
+                return null;
+            }
+        }
+
+        return $inscricoes;
+    } finally {
+        flock($bloqueio, LOCK_UN);
+        fclose($bloqueio);
+    }
+}
