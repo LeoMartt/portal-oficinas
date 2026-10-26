@@ -1,6 +1,6 @@
 <?php
 // Filtro de multiplas categorias via GET com apoio de IA.
-// Referencia: IA-04 em USO_IA.md (atualizar com esta melhoria).
+// Referencia: IA-04 em USO_IA.md. Links de pre-selecao: IA-07.
 $tituloPagina = 'Oficinas';
 require_once dirname(__DIR__) . '/includes/oficinas.php';
 
@@ -149,7 +149,7 @@ require_once dirname(__DIR__) . '/includes/cabecalho.php';
                                     <?= date('d/m/Y', strtotime($oficina['data'])) ?>
                                 </time>
                             </p>
-                            <a href="/inscricao.php">Selecionar oficina no formulário</a>
+                            <a href="/inscricao.php?oficina=<?= rawurlencode($oficina['id']) ?>">Selecionar oficina no formulário</a>
                         </article>
                     <?php endforeach; ?>
                 </div>
