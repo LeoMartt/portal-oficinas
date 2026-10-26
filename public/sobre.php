@@ -33,7 +33,7 @@ require_once dirname(__DIR__) . '/includes/cabecalho.php';
 
         <section aria-labelledby="titulo-autoria">
             <h2 id="titulo-autoria">Autoria e transparência</h2>
-            <p><strong>Autor:</strong> [preencher com seu nome].</p>
+            <p><strong>Autor:</strong> Leonardo Martins da Silva.</p>
             <p>O uso de inteligência artificial no planejamento e na implementação está documentado em <code>USO_IA.md</code>, no repositório do projeto.</p>
         </section>
 
