@@ -1,5 +1,5 @@
 <?php
-// Estrutura inicial da página criada com apoio de IA. Ver IA-02 em USO_IA.md.
+// Estrutura inicial: IA-02. Links com oficina preselecionada: IA-07 (USO_IA.md).
 $tituloPagina = 'Início';
 require_once dirname(__DIR__) . '/includes/cabecalho.php';
 ?>
@@ -28,7 +28,7 @@ require_once dirname(__DIR__) . '/includes/cabecalho.php';
                     <h3>Japonês para Iniciantes</h3>
                     <p>Aprenda expressões básicas, apresentações e frases comuns do dia a dia.</p>
                     <p><strong>Carga horária:</strong> 12 horas</p>
-                    <a href="/inscricao.php">Quero me inscrever</a>
+                    <a href="/inscricao.php?oficina=idioma-01">Quero me inscrever</a>
                 </article>
 
                 <article class="card-oficina">
@@ -36,7 +36,7 @@ require_once dirname(__DIR__) . '/includes/cabecalho.php';
                     <h3>História e Tradições do Japão</h3>
                     <p>Descubra celebrações, períodos históricos e costumes japoneses.</p>
                     <p><strong>Carga horária:</strong> 10 horas</p>
-                    <a href="/inscricao.php">Quero me inscrever</a>
+                    <a href="/inscricao.php?oficina=cultura-01">Quero me inscrever</a>
                 </article>
 
                 <article class="card-oficina">
@@ -44,7 +44,7 @@ require_once dirname(__DIR__) . '/includes/cabecalho.php';
                     <h3>Origami e Artes Tradicionais</h3>
                     <p>Conheça a arte da dobradura e suas conexões com a cultura japonesa.</p>
                     <p><strong>Carga horária:</strong> 5 horas</p>
-                    <a href="/inscricao.php">Quero me inscrever</a>
+                    <a href="/inscricao.php?oficina=artes-02">Quero me inscrever</a>
                 </article>
             </div>
         </div>
