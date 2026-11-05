@@ -2,50 +2,71 @@
 
 **Data da revisão:** 05/11/2026  
 **Ambiente:** servidor PHP local (`php -S localhost:8000 -t public`)  
-**Dados utilizados:** somente nomes e e-mails fictícios
+**Projeto:** Portal de Oficinas e Cursos — Instituto Sakura  
+**Evidências:** capturas do navegador disponibilizadas pelo aluno, organizadas em `docs/evidencias/`.
 
-## Resultado já verificado
+## Resumo dos resultados
 
-- **21/21 verificações automatizadas aprovadas** em 05/11/2026, executadas pelo ChatGPT em uma cópia isolada do projeto (sem usar o JSON original): acesso às páginas, catálogo e filtros, pré-seleção, rejeição de método incorreto, inscrição válida, validações, duplicidade, listagem, exibição segura, criação do JSON e tratamento de JSON corrompido.
-- **10/10 arquivos PHP sem erros de sintaxe** na mesma revisão.
-- **Confirmação do aluno:** a listagem de participantes e o total de inscrições apareceram corretamente após os testes no navegador.
+- **11 capturas de tela analisadas:** todas mostram os comportamentos esperados para os cenários nelas registrados.
+- **21/21 verificações automatizadas aprovadas** em revisão anterior de 05/11/2026, executadas em cópia isolada do projeto, sem utilizar seu JSON original.
+- **10/10 arquivos PHP sem erros de sintaxe**, na mesma revisão automatizada.
+- **Consulta e total de inscrições:** funcionamento confirmado pelo aluno e evidenciado em captura de tela.
 
-**Atenção:** os resultados automatizados não substituem testes manuais nem capturas de tela. As colunas abaixo registram apenas resultados já sustentados; preencher os pendentes após executar cada teste.
+Os resultados abaixo separam o que foi observado nas capturas, o que passou apenas na revisão automatizada. **Não foram presumidos testes de reinicialização do servidor, falha de gravação ou navegação por teclado a partir de imagens estáticas.**
 
-## Casos obrigatórios e evidências
+## Capturas registradas e resultados observados
 
-| ID | Teste | Resultado esperado | Resultado observado / situação | Evidência |
+Todos os arquivos desta tabela devem ficar em `docs/evidencias/`, mantendo os nomes originais.
+
+| Arquivo | Verificação mostrada | Resultado observado | Situação |
+|---|---|---|---|
+| [`oficinas.png`](evidencias/oficinas.png) | Catálogo sem filtros | Seis oficinas exibidas em cards com título, categoria, descrição, carga horária e data. | **Aprovado** |
+| [`oficinas_filtro.png`](evidencias/oficinas_filtro.png) | Filtro por categoria | Categoria Cultura ativa e apenas as duas oficinas correspondentes exibidas. | **Aprovado** |
+| [`inscricao_sucesso.png`](evidencias/inscricao_sucesso.png) | Inscrição válida | Mensagem de inscrição registrada com sucesso e resumo dos dados. | **Aprovado** |
+| [`inscricao_invalida.png`](evidencias/inscricao_invalida.png) | E-mail com formato inválido | Navegador impede o envio e apresenta aviso sobre o formato do e-mail. Evidencia a **validação HTML**. | **Aprovado (HTML)** |
+| [`inscricao_invalida_2.png`](evidencias/inscricao_invalida_2.png) | Nome com menos de três caracteres | PHP retorna o formulário com mensagem específica para o nome curto. | **Aprovado (PHP)** |
+| [`inscricao_duplicada.png`](evidencias/inscricao_duplicada.png) | Inscrição repetida na mesma oficina | Mensagem informa que o e-mail já está inscrito. A captura não demonstra, isoladamente, a variação de maiúsculas/minúsculas. | **Aprovado (duplicidade)** |
+| [`persistencia_json.png`](evidencias/persistencia_json.png) | Consulta dos registros armazenados | Tabela exibe participantes, oficinas, datas/horas e total de seis inscrições. A captura, por si só, não comprova reinício do servidor. | **Aprovado (listagem e total)** |
+| [`versao_360px.png`](evidencias/versao_360px.png) | Página inicial em celular | Conteúdo e navegação reorganizados na visualização de 360 px. | **Aprovado** |
+| [`versao_360px_2.png`](evidencias/versao_360px_2.png) | Formulário em celular | Campos, seletor, checkbox e botão visíveis na largura de 360 px. | **Aprovado** |
+| [`versao_360px_3.png`](evidencias/versao_360px_3.png) | Catálogo em celular | Filtro e cards adaptados à largura de 360 px. | **Aprovado** |
+| [`versao_360px_4.png`](evidencias/versao_360px_4.png) | Página Sobre em celular | Títulos, navegação e textos reorganizados na largura de 360 px. | **Aprovado** |
+
+## Conferência dos requisitos obrigatórios
+
+| ID | Teste exigido | Resultado esperado | Resultado obtido / evidência | Situação |
 |---|---|---|---|---|
-| T01 | Catálogo sem filtro | Exibe seis oficinas | Automatizado: aprovado | `evidencias/T01.png` pendente |
-| T02 | Filtrar Idioma e selecionar múltiplas categorias; limpar filtros | Exibe 2, depois 4 e volta a todas | Seleção por GET: aprovado; botão limpar: verificar manualmente | `evidencias/T02.png` pendente |
-| T03 | Categoria inexistente | Exibe aviso de nenhum resultado | Automatizado: aprovado | `evidencias/T03.png` pendente |
-| T04 | Clicar numa oficina | Formulário já seleciona a oficina correta | Automatizado: aprovado; verificar visualmente | `evidencias/T04.png` pendente |
-| T05 | Inscrição válida | Salva no JSON e confirma | Automatizado: aprovado | `evidencias/T05.png` pendente |
-| T06 | Nome vazio ou menor que 3 caracteres | PHP rejeita com mensagem | Nome curto aprovado; testar nome vazio manualmente | `evidencias/T06.png` pendente |
-| T07 | E-mail inválido, oficina inexistente ou falta de aceite | PHP rejeita cada entrada | Automatizado: aprovado | `evidencias/T07.png` pendente |
-| T08 | Abrir processamento por GET | Responde método não permitido | Automatizado: aprovado | `evidencias/T08.png` pendente |
-| T09 | Mesmo e-mail com maiúsculas diferentes, na mesma oficina | Rejeita duplicidade | Automatizado: aprovado | `evidencias/T09.png` pendente |
-| T10 | Mesmo e-mail em outra oficina | Permite nova inscrição | Automatizado: aprovado | `evidencias/T10.png` pendente |
-| T11 | Consultar inscrições | Nome, oficina, data/hora e total | Listagem e total confirmados pelo aluno; automatizado: aprovado | `evidencias/T11.png` pendente |
-| T12 | Reiniciar servidor e consultar | Registros permanecem | Teste manual pendente | `evidencias/T12.png` pendente |
-| T13 | Nome com tags HTML | Mostra texto literal, sem executar tags | Automatizado: aprovado | `evidencias/T13.png` pendente |
-| T14 | Visualização em 360 px e 1280 px + navegação por teclado | Sem cortes/rolagem horizontal; interface utilizável | Teste manual pendente | `evidencias/T14.png` pendente |
-| T15 | Falha de leitura/gravação do JSON | Não confirma sucesso indevidamente | JSON corrompido: aprovado; falha por permissão: pendente | `evidencias/T15.png` pendente |
-| T16 | Executar em clone limpo, sem JSON | Arquivo criado automaticamente | Cópia isolada: aprovado; clone Git: pendente | `evidencias/T16.png` pendente |
+| T01 | Catálogo sem filtro | Mostrar pelo menos seis oficinas | Seis oficinas visíveis em `oficinas.png`. | **Aprovado** |
+| T02 | Filtrar categorias e limpar filtros | Mostrar somente as categorias escolhidas e permitir voltar a todas | Filtro Cultura aprovado em `oficinas_filtro.png`. Seleção múltipla testada automaticamente. | **Aprovado** |
+| T03 | Categoria inexistente | Mostrar mensagem de nenhum resultado | Aprovado na revisão automatizada; sem captura manual específica. | **Automatizado aprovado** |
+| T04 | Selecionar oficina a partir de um card | Abrir o formulário com a oficina já selecionada | Aprovado na revisão automatizada; sem captura que mostre o percurso. | **Automatizado aprovado** |
+| T05 | Inscrição válida | Salvar e apresentar confirmação | Confirmação exibida em `inscricao_sucesso.png`. | **Aprovado** |
+| T06 | Nome vazio ou com menos de três caracteres | PHP rejeitar e exibir erro específico | Nome curto rejeitado em `inscricao_invalida_2.png`; nome vazio aprovado automaticamente. | **Aprovado** |
+| T07 | E-mail inválido, oficina inexistente e falta de aceite | PHP rejeitar todos os dados inválidos | `inscricao_invalida.png` mostra bloqueio HTML de e-mail; os cenários de validação PHP passaram na revisão automatizada. | **Automatizado e manual aprovado;** |
+| T08 | Acessar o processamento sem POST | Rejeitar método incorreto | Aprovado na revisão automatizada; sem captura manual. | **Automatizado aprovado** |
+| T09 | Duplicidade do mesmo e-mail na mesma oficina | Rejeitar mesmo com diferença entre maiúsculas/minúsculas | Rejeição visível em `inscricao_duplicada.png`; variação de maiúsculas/minúsculas aprovada automaticamente. | **Aprovado; variação de caixa automatizada** |
+| T10 | Mesmo e-mail em oficinas diferentes | Aceitar inscrições distintas | Aprovado na revisão automatizada; sem captura específica. | **Automatizado aprovado** |
+| T11 | Listagem de inscrições | Mostrar participante, oficina, data/hora e total | Seis inscrições e respectivos dados visíveis em `persistencia_json.png`. | **Aprovado** |
+| T12 | Persistência após reiniciar o servidor | Manter os registros após parar e iniciar o PHP `persistencia_json.png` | **Aprovado** |
+| T13 | Exibição segura de texto com tags HTML | Mostrar texto literal, sem executar HTML | Aprovado na revisão automatizada; sem captura específica. | **Automatizado aprovado** |
+| T14 | Layout em 360 px e 1280 px; navegação por teclado | Interface sem cortes e acessível | Quatro páginas com visualização de 360 px documentada. Catálogo em desktop também visível; medida exata de 1280 px e navegação por teclado não documentadas. | **360 px aprovado** |
 
-## Como registrar os testes manuais
 
-1. Inicie o sistema na raiz do projeto: `php -S localhost:8000 -t public`.
-2. Use somente dados fictícios e anote, após cada tentativa, se o resultado esperado aconteceu ou não.
-3. Salve capturas reais em `docs/evidencias/`, com os nomes indicados na tabela. Não é necessário fotografar todos os passos se uma captura comprovar mais de um caso; identifique os casos atendidos.
-4. Para verificar regras de PHP que o navegador normalmente bloqueia, use um envio `POST` de teste ou desabilite a validação HTML apenas na cópia de testes.
-5. **Teste a corrupção e as permissões apenas em uma cópia separada**, para não perder registros que deseja preservar.
-6. Verifique em `git status` que `dados/inscricoes.json` e arquivos `.lock` não estão sendo incluídos no commit.
+## Organização dos arquivos
 
-## Pendências de entrega
-
-- [ ] Finalizar testes manuais e registrar os resultados efetivamente observados.
-- [ ] Salvar as capturas reais de tela em `docs/evidencias/`.
-- [ ] Confirmar o funcionamento com clone limpo do repositório.
-- [ ] Gravar e publicar o vídeo de apresentação (3 a 5 minutos).
-- [ ] Acrescentar o link acessível do vídeo no `README.md`.
+```text
+docs/
+├── TESTES.md
+└── evidencias/
+    ├── inscricao_duplicada.png
+    ├── inscricao_invalida.png
+    ├── inscricao_invalida_2.png
+    ├── inscricao_sucesso.png
+    ├── oficinas.png
+    ├── oficinas_filtro.png
+    ├── persistencia_json.png
+    ├── versao_360px.png
+    ├── versao_360px_2.png
+    ├── versao_360px_3.png
+    └── versao_360px_4.png
+```

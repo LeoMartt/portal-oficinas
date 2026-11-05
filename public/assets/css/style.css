@@ -1,7 +1,7 @@
 /*
  * Instituto Sakura — identidade visual Sakura Minimalista
  * CSS autoral do projeto acadêmico, desenvolvido com apoio de IA.
- * Registro: IA-03 em USO_IA.md.
+ * Registro: IA-02 em USO_IA.md.
  * Não utiliza Bootstrap, Tailwind, frameworks ou bibliotecas CSS.
  */
 
@@ -624,7 +624,7 @@ form > p {
     }
 }
 
-/* 10. Menu de filtros do catalogo — IA-04 */
+/* 10. Menu de filtros do catalogo — IA-03 */
 .cabecalho-catalogo {
     display: flex;
     align-items: center;
@@ -878,7 +878,7 @@ form > p {
     color: var(--cor-suave);
 }
 
-/* Correcao responsiva do menu de filtros - ver IA-04 em USO_IA.md. */
+/* Correcao responsiva do menu de filtros - ver IA-03 em USO_IA.md. */
 @media (max-width: 650px) {
     .cabecalho-catalogo {
         flex-direction: column;
@@ -916,7 +916,7 @@ form > p {
         width: auto;
     }
 }
-/* 10. Consulta de inscricoes - Registro IA-08 */
+/* 10. Consulta de inscricoes - Registro IA-07 */
 .resumo-inscricoes {
     display: flex;
     justify-content: space-between;

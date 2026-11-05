@@ -1,5 +1,5 @@
 <?php
-// Validacoes: IA-05. Salvamento JSON e duplicidades: IA-06 (USO_IA.md).
+// Validacoes: IA-04. Salvamento JSON e duplicidades: IA-05 (USO_IA.md).
 $tituloPagina = 'Resultado da inscrição';
 
 // Impede processar a pagina sem envio do formulario.

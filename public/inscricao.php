@@ -1,7 +1,7 @@
 <?php
-// Formulario e preservacao dos campos com apoio de IA. Ver IA-05 em USO_IA.md.
-// Integracao com persistencia JSON. Ver IA-06 em USO_IA.md.
-// Preselecao de oficinas pela URL. Ver IA-07 em USO_IA.md.
+// Formulario e preservacao dos campos com apoio de IA. Ver IA-04 em USO_IA.md.
+// Integracao com persistencia JSON. Ver IA-05 em USO_IA.md.
+// Preselecao de oficinas pela URL. Ver IA-06 em USO_IA.md.
 
 $tituloPagina = 'Inscrição';
 
