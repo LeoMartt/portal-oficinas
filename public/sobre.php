@@ -1,5 +1,5 @@
 <?php
-// Estrutura da página Sobre criada com apoio de IA. Ver IA-02 em USO_IA.md.
+// Estrutura inicial com apoio de IA: IA-02. Revisao do conteudo: IA-09 (USO_IA.md).
 $tituloPagina = 'Sobre';
 require_once dirname(__DIR__) . '/includes/cabecalho.php';
 ?>
@@ -8,38 +8,44 @@ require_once dirname(__DIR__) . '/includes/cabecalho.php';
     <div class="container">
         <header class="cabecalho-pagina">
             <h1>Sobre o Instituto Sakura</h1>
-            <p>Um portal acadêmico inspirado na aprendizagem da língua e da cultura japonesa.</p>
+            <p>Um portal acadêmico dedicado ao aprendizado da língua e da cultura japonesa.</p>
         </header>
 
         <section aria-labelledby="titulo-projeto">
             <h2 id="titulo-projeto">Objetivo do projeto</h2>
             <p>
-                O Instituto Sakura é uma instituição inteiramente fictícia, criada para um trabalho
-                prático de desenvolvimento web. O site apresenta oficinas sobre idioma, cultura e
-                artes japonesas e servirá como demonstração de um sistema de inscrições.
+                O Instituto Sakura é uma instituição fictícia criada para um trabalho
+                prático de desenvolvimento web. O portal apresenta oficinas de idioma,
+                cultura e artes japonesas e permite simular inscrições em ambiente local.
             </p>
         </section>
 
         <section aria-labelledby="titulo-tecnologias">
             <h2 id="titulo-tecnologias">Tecnologias utilizadas</h2>
             <ul>
-                <li>HTML semântico para estruturar as páginas.</li>
-                <li>CSS próprio para apresentação e responsividade (próxima etapa).</li>
-                <li>PHP para reutilização de cabeçalho e rodapé; o processamento será desenvolvido posteriormente.</li>
-                <li>JSON para armazenar inscrições fictícias (etapa futura).</li>
-                <li>Git e GitHub para registrar a evolução do projeto.</li>
+                <li>HTML semântico para estruturar o conteúdo e a navegação.</li>
+                <li>CSS próprio para identidade visual e adaptação a diferentes telas.</li>
+                <li>PHP para montar o catálogo, filtrar oficinas, validar formulários e consultar inscrições.</li>
+                <li>JSON para armazenar os registros fictícios de inscrição.</li>
+                <li>Git e GitHub para organizar e acompanhar a evolução do código.</li>
             </ul>
         </section>
 
         <section aria-labelledby="titulo-autoria">
             <h2 id="titulo-autoria">Autoria e transparência</h2>
             <p><strong>Autor:</strong> Leonardo Martins da Silva.</p>
-            <p>O uso de inteligência artificial no planejamento e na implementação está documentado em <code>USO_IA.md</code>, no repositório do projeto.</p>
+            <p>
+                O desenvolvimento contou com apoio de inteligência artificial em etapas
+                identificadas no arquivo <code>USO_IA.md</code> do repositório do projeto.
+            </p>
         </section>
 
         <section aria-labelledby="titulo-aviso">
             <h2 id="titulo-aviso">Aviso acadêmico</h2>
-            <p>Este projeto é uma simulação. Os cursos, datas e inscrições são fictícios. Não existe oferta comercial ou inscrição real.</p>
+            <p>
+                Este site é uma simulação acadêmica. A instituição, as oficinas, as datas e os
+                registros de participantes são fictícios. Não há cursos ou inscrições reais.
+            </p>
         </section>
     </div>
 </main>

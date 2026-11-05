@@ -1,146 +1,59 @@
-# Registro de Utilização de Inteligência Artificial
+# Registro de utilização de inteligência artificial
 
-Este documento registra a utilização de ferramentas de inteligência artificial como apoio ao desenvolvimento do trabalho acadêmico **Portal de Oficinas e Cursos**, desenvolvido com HTML, CSS e PHP.
+**Projeto:** Instituto Sakura — Portal de Oficinas e Cursos  
+**Ferramenta:** ChatGPT (OpenAI), modelo GPT-6  
+**Critério de registro:** principais intervenções com impacto no projeto; correções pequenas relacionadas são agrupadas no mesmo registro. Os commits citados correspondem ao histórico disponível no projeto enviado. Os resultados automatizados não são apresentados como testes feitos manualmente pelo aluno.
 
-Os registros serão adicionados conforme a utilização da ferramenta durante o projeto.
 
----
+## IA-01 — Estrutura das páginas (19/10/2026)
 
-## IA-01 — Planejamento e cronograma do projeto
+- **Pedido:** apoiar a criação das páginas HTML de um portal sobre língua e cultura japonesa.
+- **Aplicação:** estrutura inicial das seis páginas em `public/` e partes compartilhadas em `includes/cabecalho.php` e `includes/rodape.php`.
+- **Decisão/verificação:** o tema **Instituto Sakura** foi escolhido pelo aluno; as páginas e a navegação foram abertas no servidor local. As funcionalidades de PHP foram acrescentadas depois.
+- **Commit relacionado:** `ea04749`.
 
-**Data:** 19/10/2026  
-**Ferramenta:** ChatGPT (OpenAI)  
-**Modelo:** GPT-6  
-**Finalidade:** Planejamento das etapas de desenvolvimento do projeto.
+## IA-02 — Design e CSS (19/10/2026)
 
-### Solicitação realizada
+- **Pedido:** apresentar opções de design e adaptar o CSS ao estilo escolhido.
+- **Aplicação:** `public/assets/css/style.css`.
+- **Decisão/verificação:** o aluno escolheu e aprovou o design **Sakura Minimalista**. A conferência formal de 360 px, 1280 px e navegação por teclado permanece na documentação de testes.
+- **Commit relacionado:** `c05c4c0`.
 
-Foi solicitado à inteligência artificial que analisasse o documento de requisitos do trabalho acadêmico, apresentasse um resumo das funcionalidades necessárias e elaborasse um cronograma de desenvolvimento considerando a data de entrega de 20/11/2026.
+## IA-03 — Catálogo e filtros (19/10/2026)
 
-### Conteúdo gerado
+- **Pedido:** gerar as oficinas com PHP, permitir filtros por checkboxes e corrigir o filtro que ultrapassava a tela no celular.
+- **Aplicação:** `includes/oficinas.php`, `public/oficinas.php` e trechos de `public/assets/css/style.css`.
+- **Decisão/verificação:** a escolha do filtro de múltiplas categorias e a identificação do problema mobile partiram do aluno. Após o ajuste, ele confirmou que o filtro passou a aparecer corretamente no celular.
+- **Commits relacionados:** `c712a47` (filtros) e `b6aa017` (responsividade).
 
-A ferramenta apresentou uma divisão do projeto em etapas, considerando a implementação das páginas HTML, estilização com CSS, funcionalidades PHP, armazenamento em JSON, testes e documentação.
+## IA-04 — Validação das inscrições (19/10/2026)
 
-O cronograma sugerido foi:
+- **Pedido:** validar no PHP nome, e-mail, oficina e aceite da simulação, com mensagens de erro e envio por `POST`.
+- **Aplicação:** `public/inscricao.php` e `public/salvar-inscricao.php`.
+- **Decisão/verificação:** o aceite obrigatório foi mantido após conferir o enunciado. A validação de dados inválidos e de método incorreto passou em testes automatizados em 05/11/2026; registrar evidências manuais em `docs/TESTES.md`.
+- **Commit relacionado:** `b8f5b0a` (validação integrada com a persistência).
 
-| Período | Atividade |
-|---|---|
-| 19/10 a 25/10 | Estrutura inicial e desenvolvimento das páginas HTML |
-| 26/10 a 01/11 | Estilização CSS e responsividade |
-| 02/11 a 08/11 | Implementação do catálogo dinâmico e filtros em PHP |
-| 09/11 a 13/11 | Formulário, validações e armazenamento em JSON |
-| 14/11 a 16/11 | Testes, identificação de erros e correções |
-| 17/11 a 20/11 | Documentação, gravação do vídeo e entrega final |
+## IA-05 — Armazenamento JSON e duplicidades (26/10/2026)
 
-### Arquivos ou seções afetados
+- **Pedido:** salvar inscrições em JSON sem perder dados anteriores e rejeitar inscrições repetidas para a mesma oficina e e-mail.
+- **Aplicação:** `includes/armazenamento-inscricoes.php`, `public/salvar-inscricao.php` e `public/inscricao.php`.
+- **Decisão/verificação:** foram aproveitadas as rotinas de gravação e controle de duplicidade. Testes automatizados em cópia isolada verificaram criação do JSON, duplicidade e tratamento de JSON inválido; os testes manuais e capturas seguem documentados separadamente.
+- **Commit relacionado:** `b8f5b0a`.
 
-- `USO_IA.md`: registro do planejamento e cronograma.
-- Nenhum código-fonte foi gerado ou incorporado a partir desta consulta.
+## IA-06 — Pré-seleção da oficina (26/10/2026)
 
-**Commit relacionado:** a preencher após o registro no Git.
+- **Pedido:** fazer com que o botão de uma oficina abra o formulário com a oficina já selecionada.
+- **Aplicação:** `public/index.php`, `public/oficinas.php` e `public/inscricao.php`.
+- **Decisão/verificação:** os links passaram a informar o identificador da oficina; o PHP aceita apenas identificadores presentes no catálogo. A pré-seleção foi contemplada nos testes automatizados; conferir também a interação no navegador.
+- **Commit relacionado:** `b8f5b0a` (ajustes integrados no fluxo).
 
-### Aproveitamento e alterações
+## IA-07 — Consulta de inscrições (26/10/2026)
 
-O cronograma foi proposto pela inteligência artificial como referência para organizar o desenvolvimento. As datas poderão ser ajustadas conforme o andamento das atividades.
-
-### Verificação
-
-A conferência do cronograma com os requisitos do documento original e seu acompanhamento serão realizados ao longo do desenvolvimento. Não foram realizados testes de código nesta etapa, pois a consulta teve finalidade exclusivamente de planejamento.
-
----
-
-## IA-02 — Desenvolvimento da estrutura HTML
-
-**Data:** 19/10/2026  
-**Ferramenta:** ChatGPT (OpenAI)  
-**Modelo:** GPT-6  
-**Finalidade:** Auxílio na criação da estrutura inicial das páginas do projeto.
-
-### Solicitação realizada
-
-Foi solicitado à inteligência artificial o desenvolvimento da estrutura HTML de um portal de oficinas com temática japonesa, voltado ao aprendizado da língua, cultura e tradições do Japão, seguindo os requisitos apresentados no documento acadêmico.
-
-### Conteúdo gerado
-
-A ferramenta auxiliou na elaboração da estrutura inicial do site fictício denominado **Instituto Sakura — Língua e Cultura Japonesa**.
-
-Foram criadas as seis páginas exigidas pelo projeto, com navegação compartilhada, apresentação das oficinas, formulário de inscrição e organização semântica do HTML.
-
-Foram consideradas seis oficinas distribuídas nas categorias Idioma, Cultura e Artes.
-
-### Arquivos afetados
-
-- `public/index.php` — Página inicial.
-- `public/oficinas.php` — Catálogo de oficinas.
-- `public/inscricao.php` — Formulário de inscrição.
-- `public/salvar-inscricao.php` — Estrutura do resultado.
-- `public/inscricoes.php` — Página de consulta de inscrições.
-- `public/sobre.php` — Informações sobre o projeto.
-- `includes/cabecalho.php` — Cabeçalho e navegação.
-- `includes/rodape.php` — Rodapé.
-- `public/assets/css/style.css` — Arquivo inicial destinado à estilização.
-
-**Commit relacionado:** preencher após realizar o commit.
-
-### Aproveitamento e alterações
-
-Foi utilizada a estrutura inicial sugerida pela inteligência artificial como base para o desenvolvimento do projeto. O tema japonês foi escolhido pelo aluno, com foco em oficinas relacionadas ao idioma, à cultura e às artes japonesas.
-
-Eventuais alterações posteriores na estrutura serão documentadas conforme o desenvolvimento.
-
-### Verificação
-
-Os arquivos foram executados localmente utilizando o servidor integrado do PHP. Foi realizado um teste manual de navegação, e o funcionamento inicial das páginas HTML foi confirmado.
-
-As funcionalidades de filtragem dinâmica, validação de inscrições e armazenamento em JSON ainda não foram concluídas. Elas serão desenvolvidas e testadas nas próximas etapas.
+- **Pedido:** ler o JSON e exibir participantes, oficinas, datas e total, de forma segura.
+- **Aplicação:** `public/inscricoes.php`, `includes/armazenamento-inscricoes.php` e estilos da consulta em `public/assets/css/style.css`.
+- **Decisão/verificação:** o aluno confirmou que a listagem e o total aparecem corretamente; testes automatizados adicionais verificaram exibição segura de texto e erro em JSON corrompido.
+- **Commit relacionado:** `eaf0614`.
 
 ---
 
-## IA-03 — Desenvolvimento do CSS e identidade visual
-
-**Data:** 19/10/2026  
-**Ferramenta:** ChatGPT (OpenAI)  
-**Modelo:** GPT-6  
-**Finalidade:** Desenvolvimento da identidade visual e estilização das páginas do Instituto Sakura.
-
-### Solicitação realizada
-
-Foi solicitado à inteligência artificial que apresentasse sugestões de design para o portal acadêmico Instituto Sakura, relacionado ao ensino da língua e cultura japonesa.
-
-Após a apresentação de quatro propostas visuais, foi escolhido o estilo Sakura Minimalista. Em seguida, foi solicitado o desenvolvimento do CSS para aplicação nas páginas HTML existentes.
-
-### Conteúdo gerado
-
-A ferramenta auxiliou no desenvolvimento da identidade visual do site, utilizando uma paleta de cores inspirada nas flores de cerejeira japonesas, com tons de creme, rosa, vermelho e vinho.
-
-O CSS desenvolvido contemplou a estilização dos seguintes elementos:
-
-- Cabeçalho e menu de navegação.
-- Página inicial e seções de apresentação.
-- Cards das oficinas.
-- Botões e links.
-- Formulários de inscrição.
-- Rodapé.
-- Regras de responsividade para diferentes tamanhos de tela.
-
-### Arquivos afetados
-
-- `public/assets/css/style.css` — Implementação da estilização visual e regras de responsividade.
-
-**Commit relacionado:** preencher após realizar o commit.
-
-### Aproveitamento e alterações
-
-Entre as propostas apresentadas pela inteligência artificial, foi escolhido o design Sakura Minimalista por sua relação com a temática japonesa e sua organização visual.
-
-O CSS gerado com apoio da ferramenta foi utilizado como base para a estilização do portal. O aluno avaliou o resultado visual e aprovou o design para continuidade do desenvolvimento.
-
-### Verificação
-
-O CSS foi aplicado ao projeto e o resultado visual foi avaliado pelo aluno no navegador, sendo considerado adequado para o Instituto Sakura.
-
-A verificação específica da responsividade nas larguras de 360 px e 1280 px, da navegação por teclado e da ausência de rolagem horizontal deverá ser confirmada e documentada nos testes do projeto.
-
----
-
-*Novos registros serão acrescentados conforme a utilização de inteligência artificial nas próximas etapas do projeto.*
+**Observação:** os registros acima descrevem apoio efetivamente utilizado. A revisão final, os testes manuais, as eventuais adaptações e a explicação técnica na apresentação são de responsabilidade do aluno.

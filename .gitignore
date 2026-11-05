@@ -1,10 +1,18 @@
-# Dados gerados pelo sistema
+# Dados locais da simulacao (nunca publicar inscricoes)
 dados/*.json
+dados/*.lock
+dados/insc_*
 
-# Arquivos temporarios
+# Arquivos temporarios e registros locais
 *.log
 *.tmp
 
-# Configuracoes locais
+# Configuracoes locais e segredos
 .env
+.env.*
+!.env.example
 .vscode/
+
+# Arquivos do sistema operacional
+Thumbs.db
+.DS_Store
