@@ -1,6 +1,6 @@
 <?php
 // Persistencia JSON e verificacao de duplicidade com apoio de IA.
-// Referencia: IA-06 no arquivo USO_IA.md.
+// Referencia: IA-05 no arquivo USO_IA.md.
 
 /**
  * Salva uma inscricao, sem apagar as anteriores.
@@ -103,7 +103,7 @@ function salvarInscricaoJson(array $novoRegistro): string
 /**
  * Consulta as inscricoes registradas no JSON.
  * Retorna a lista de registros, [] se vazia, ou null em caso de erro.
- * Leitura adicionada com apoio de IA. Ver IA-08 em USO_IA.md.
+ * Leitura adicionada com apoio de IA. Ver IA-07 em USO_IA.md.
  */
 function listarInscricoesJson(): ?array
 {

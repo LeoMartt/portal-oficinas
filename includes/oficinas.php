@@ -1,5 +1,5 @@
 <?php
-// Dados do catalogo organizados com apoio de IA. Ver IA-04 em USO_IA.md.
+// Dados do catalogo organizados com apoio de IA. Ver IA-03 em USO_IA.md.
 // Todas as oficinas sao ficticias.
 $categorias = [
     'idioma' => 'Idioma',

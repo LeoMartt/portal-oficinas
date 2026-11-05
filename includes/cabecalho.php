@@ -1,5 +1,5 @@
 <?php
-// Estrutura compartilhada elaborada com apoio de IA. Ver IA-02 em USO_IA.md.
+// Estrutura compartilhada elaborada com apoio de IA. Ver IA-01 em USO_IA.md.
 $tituloPagina = $tituloPagina ?? 'Início';
 $paginaAtual = basename($_SERVER['SCRIPT_NAME'] ?? 'index.php');
 $paginasMenu = [

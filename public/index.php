@@ -1,5 +1,5 @@
 <?php
-// Estrutura inicial: IA-02. Links com oficina preselecionada: IA-07 (USO_IA.md).
+// Estrutura inicial: IA-01. Links com oficina preselecionada: IA-06 (USO_IA.md).
 $tituloPagina = 'Início';
 require_once dirname(__DIR__) . '/includes/cabecalho.php';
 ?>

@@ -1,6 +1,6 @@
 <?php
 // Filtro de multiplas categorias via GET com apoio de IA.
-// Referencia: IA-04 em USO_IA.md. Links de pre-selecao: IA-07.
+// Referencia: IA-03 em USO_IA.md. Links de pre-selecao: IA-06.
 $tituloPagina = 'Oficinas';
 require_once dirname(__DIR__) . '/includes/oficinas.php';
 

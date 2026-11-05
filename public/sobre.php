@@ -1,5 +1,5 @@
 <?php
-// Estrutura inicial com apoio de IA: IA-02. Revisao do conteudo: IA-09 (USO_IA.md).
+// Estrutura inicial com apoio de IA. Ver IA-01 em USO_IA.md.
 $tituloPagina = 'Sobre';
 require_once dirname(__DIR__) . '/includes/cabecalho.php';
 ?>

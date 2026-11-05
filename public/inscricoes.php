@@ -1,6 +1,6 @@
 <?php
 // Consulta e exibicao de inscricoes com apoio de IA.
-// Ver IA-08 em USO_IA.md.
+// Ver IA-07 em USO_IA.md.
 
 $tituloPagina = 'Inscrições';
 
