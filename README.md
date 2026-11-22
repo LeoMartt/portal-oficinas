@@ -100,7 +100,7 @@ A consulta e o total de inscrições também foram conferidos manualmente durant
 
 ## Vídeo de demonstração
 
-**Link do vídeo (3 a 5 minutos):** PENDENTE — inserir aqui o link acessível ao professor após a gravação.
+**Link do vídeo (3 a 5 minutos):** [Assistir à apresentação](https://eepfumep-my.sharepoint.com/:v:/g/personal/47693_eep_br/IQBthGAzWV-LRYtWm_AJRZ6PAbstJMujdXjSe-mnELBIjIE?e=9Gd77N&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
 ## Limitações e cuidados
 
@@ -112,6 +112,6 @@ A consulta e o total de inscrições também foram conferidos manualmente durant
 
 ## Recursos externos e uso de IA
 
-A interface utiliza CSS próprio. **Não foram identificados frameworks, fontes remotas ou imagens externas no código analisado**; caso sejam acrescentados recursos de terceiros, registrar aqui a origem.
+A interface utiliza CSS próprio.
 
 Houve apoio do ChatGPT em planejamento, estrutura, design, PHP e documentação. Os principais usos, as decisões, os arquivos relacionados e as verificações estão registrados em [USO_IA.md](USO_IA.md). O autor é responsável por revisar, testar e explicar o código entregue.
