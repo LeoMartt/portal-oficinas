@@ -12,7 +12,7 @@
 - **10/10 arquivos PHP sem erros de sintaxe**, na mesma revisão automatizada.
 - **Consulta e total de inscrições:** funcionamento confirmado pelo aluno e evidenciado em captura de tela.
 
-Os resultados abaixo separam o que foi observado nas capturas, o que passou apenas na revisão automatizada. **Não foram presumidos testes de reinicialização do servidor, falha de gravação ou navegação por teclado a partir de imagens estáticas.**
+Os resultados abaixo distinguem as capturas, a revisão automatizada e os testes manuais confirmados pelo aluno. A persistência após reiniciar o servidor e o layout em 1280 px foram confirmados pelo aluno nesta atualização de 22/11/2026. Falha de gravação e navegação por teclado não foram presumidas a partir de imagens estáticas.
 
 ## Capturas registradas e resultados observados
 
@@ -47,9 +47,9 @@ Todos os arquivos desta tabela devem ficar em `docs/evidencias/`, mantendo os no
 | T09 | Duplicidade do mesmo e-mail na mesma oficina | Rejeitar mesmo com diferença entre maiúsculas/minúsculas | Rejeição visível em `inscricao_duplicada.png`; variação de maiúsculas/minúsculas aprovada automaticamente. | **Aprovado; variação de caixa automatizada** |
 | T10 | Mesmo e-mail em oficinas diferentes | Aceitar inscrições distintas | Aprovado na revisão automatizada; sem captura específica. | **Automatizado aprovado** |
 | T11 | Listagem de inscrições | Mostrar participante, oficina, data/hora e total | Seis inscrições e respectivos dados visíveis em `persistencia_json.png`. | **Aprovado** |
-| T12 | Persistência após reiniciar o servidor | Manter os registros após parar e iniciar o PHP `persistencia_json.png` | **Aprovado** |
+| T12 | Persistência após reiniciar o servidor | Manter os registros após parar e iniciar o PHP | Reiniciei o servidor e consultei novamente as inscrições. Os registros permaneceram disponíveis. Resultado: aprovado. Teste manual confirmado pelo aluno. | **Aprovado** |
 | T13 | Exibição segura de texto com tags HTML | Mostrar texto literal, sem executar HTML | Aprovado na revisão automatizada; sem captura específica. | **Automatizado aprovado** |
-| T14 | Layout em 360 px e 1280 px; navegação por teclado | Interface sem cortes e acessível | Quatro páginas com visualização de 360 px documentada. Catálogo em desktop também visível; medida exata de 1280 px e navegação por teclado não documentadas. | **360 px aprovado** |
+| T14 | Layout em 360 px e 1280 px; navegação por teclado | Interface sem cortes e acessível | Quatro páginas com visualização de 360 px documentada. Layout em 1280 px verificado e aprovado pelo aluno. Navegação por teclado ainda não documentada. | **360 px e 1280 px aprovados; teclado não documentado** |
 
 
 ## Organização dos arquivos
